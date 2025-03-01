@@ -1,13 +1,14 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-primary: 'Vazirmatn', 'Noto Sans Arabic', sans-serif;
+  --font-secondary: 'Noto Sans Arabic', 'Vazirmatn', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,5 +21,93 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary);
+  font-feature-settings: "ss01", "ss02", "ss03", "cv01";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-black/30 backdrop-blur-lg border border-purple-500/30;
+  }
+
+  .tab-active {
+    @apply border-purple-500 text-white;
+  }
+
+  .tab-inactive {
+    @apply border-transparent text-gray-400 hover:text-gray-300;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-in-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .font-primary {
+    font-family: var(--font-primary);
+  }
+  
+  .font-secondary {
+    font-family: var(--font-secondary);
+  }
+  
+  /* استایل‌های حباب چت */
+  .rounded-bubble {
+    border-radius: 18px 18px 18px 0;
+  }
+  
+  .rounded-bubble-reverse {
+    border-radius: 18px 18px 0 18px;
+  }
+}
+
+@layer base {
+  html {
+    direction: rtl;
+  }
+  
+  body {
+    font-family: var(--font-primary);
+  }
+}
+
+/* تنظیمات فونت‌های فارسی */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+input, button, textarea, select {
+  font-family: var(--font-primary);
+}
+
+/* کلاس‌های مفید */
+.prose-fa {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.prose-fa h1, .prose-fa h2, .prose-fa h3 {
+  margin-bottom: 1rem;
+}
+
+.prose-fa p + p {
+  margin-top: 1rem;
 }
