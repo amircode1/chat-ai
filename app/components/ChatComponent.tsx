@@ -129,7 +129,7 @@ export default function ChatComponent() {
         <div 
           className={`fixed md:relative inset-y-0 right-0 md:w-72 w-3/4 bg-black/40 backdrop-blur-xl transform transition-all duration-500 ease-in-out ${
             isSidebarOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
-          } z-50 border-l border-purple-500/30 md:border-l-0 md:border-r border-purple-500/30 md:pt-0 pt-14`}
+          } z-50 border-l border-purple-500/30 md:border-l-0 md:border-r md:pt-0 pt-14`}
         >
           <div className="flex justify-between items-center p-6 border-b border-purple-500/30">
             <h2 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">تاریخچه گفتگوها</h2>
