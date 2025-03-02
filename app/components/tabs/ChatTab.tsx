@@ -282,13 +282,13 @@ export default function ChatTab({ messages, setMessages }: ChatTabProps) {
             className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in`}
           >
             <div
-              className={`max-w-[80%] p-4 shadow-lg font-primary ${
+              className={`max-w-[80%] p-4 shadow-lg font-primary break-words overflow-hidden ${
                 message.role === 'user'
                   ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-bubble-reverse'
                   : 'bg-black/30 backdrop-blur-sm text-white border border-purple-500/30 rounded-bubble'
               } transition-all hover:shadow-purple-500/20`}
             >
-              {message.content}
+              <div className="whitespace-pre-wrap">{message.content}</div>
               {message.role === 'assistant' && isLoading && index === messages.length - 1 && (
                 <span className="inline-block w-2 h-4 bg-purple-500 ml-1 animate-pulse"></span>
               )}
@@ -299,19 +299,19 @@ export default function ChatTab({ messages, setMessages }: ChatTabProps) {
       </div>
       
       <div className="p-4 bg-black/30 backdrop-blur-lg border-t border-purple-500/20">
-        <form onSubmit={handleSubmit} className="flex gap-3">
+        <form onSubmit={handleSubmit} className="flex gap-3 w-full max-w-full">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="پیام خود را بنویسید..."
-            className="flex-1 p-4 bg-black/30 text-white rounded-xl border border-purple-500/30 focus:outline-none focus:border-purple-500/70 focus:ring-1 focus:ring-purple-500/70 transition-all placeholder-gray-400 font-primary"
+            className="w-full flex-1 p-4 bg-black/30 text-white rounded-xl border border-purple-500/30 focus:outline-none focus:border-purple-500/70 focus:ring-1 focus:ring-purple-500/70 transition-all placeholder-gray-400 font-primary"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading}
-            className="p-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-700/20"
+            className="flex-shrink-0 p-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-700/20"
           >
             {isLoading ? (
               <div className="h-6 w-6 border-2 border-t-transparent border-white rounded-full animate-spin"></div>

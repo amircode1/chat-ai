@@ -71,10 +71,18 @@ body {
   /* استایل‌های حباب چت */
   .rounded-bubble {
     border-radius: 18px 18px 18px 0;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
   
   .rounded-bubble-reverse {
     border-radius: 18px 18px 0 18px;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 }
 
@@ -85,6 +93,12 @@ body {
   
   body {
     font-family: var(--font-primary);
+    overflow-x: hidden;
+  }
+  
+  /* اطمینان از اینکه همه المان‌ها از عرض صفحه بیرون نزنند */
+  * {
+    max-width: 100%;
   }
 }
 
